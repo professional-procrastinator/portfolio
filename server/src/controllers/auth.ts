@@ -154,32 +154,6 @@ export const OldUser = async (req: any, res: any, next: NextFunction) => {
   return next();
 };
 
-export const Me = async (req: any, res: any, next: NextFunction) => {
-  if (!req.userID) {
-    const response: IResponse = {
-      success: false,
-      message: "Invalid token",
-      error: {
-        code: 401,
-        details: "Invalid JWT token",
-      },
-    };
-    return res.status(200).json(response);
-  }
-  const user = await User.findById(req.userID).select("-password");
-
-  const response: IResponse = {
-    success: true,
-    message: "User found.",
-    response: {
-      data: user,
-      timestamp: Date.now(),
-    },
-  };
-
-  return res.status(200).json(response);
-};
-
 export const Logout = async (req: any, res: any, next: NextFunction) => {
   const response: IResponse = {
     success: true,
@@ -200,18 +174,6 @@ export const ChangePassword = async (
   res: any,
   next: NextFunction
 ) => {
-  if (!req.userID) {
-    const response: IResponse = {
-      success: false,
-      message: "Something went wrong. Try again?",
-      error: {
-        code: 401,
-        details: "Invalid JWT token",
-      },
-    };
-    return res.status(200).json(response);
-  }
-
   const { oldPassword, newPassword } = req.body;
 
   if (

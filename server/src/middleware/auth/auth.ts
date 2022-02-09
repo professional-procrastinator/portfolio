@@ -14,7 +14,19 @@ const Auth = (req: any, res: any, next: NextFunction) => {
     const decoded = jwt.verify(token, config.JWT_SECRET);
     req.userID = decoded;
     return next();
-  } catch (err) {}
+  } catch (err) {
+    const response: IResponse = {
+      success: false,
+      message: "Invalid token",
+      error: {
+        code: 401,
+        details: "Invalid JWT token",
+      },
+    };
+    res.status(200).json(response);
+
+    return next();
+  }
 
   return next();
 };

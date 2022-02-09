@@ -5,15 +5,7 @@ import { Router } from "express";
 const authRouter = Router();
 import { redisClient } from "../config";
 
-import {
-  NewUser,
-  OldUser,
-  Me,
-  Logout,
-  ChangePassword,
-} from "../controllers/auth";
-
-authRouter.get("/me", Auth, Me);
+import { NewUser, OldUser, Logout, ChangePassword } from "../controllers/auth";
 
 authRouter.post("/signup", NewUser);
 authRouter.post("/login", OldUser);

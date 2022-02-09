@@ -27,6 +27,12 @@ const UserSchema = new Schema(
       required: true,
       enum: ["password", "google"],
     },
+    theme: {
+      type: String,
+      required: false,
+      default: "light",
+      enum: ["light", "dark"],
+    },
   },
   {
     timestamps: true,

@@ -15,8 +15,8 @@ test("init", async () => {
   expect(users).toHaveLength(0);
 });
 
-test("GET /auth/me - empty request with no token", async () => {
-  const response = await supertest(app).get("/auth/me");
+test("GET /me - empty request with no token", async () => {
+  const response = await supertest(app).get("/me");
 
   expect(response.body.success).toBe(false);
   expect(response.body.error.code).toBe(401);
@@ -65,9 +65,9 @@ test("POST /auth/signup - valid request", async () => {
   //wtf is this logic i dont even know what i did
 });
 
-test("POST /auth/me", async () => {
+test("POST /me", async () => {
   const response = await supertest(app)
-    .get("/auth/me")
+    .get("/me")
     .set("Cookie", [`${config.app.cookiePrefix}_token=${sessionToken}`]);
 
   expect(response.body.success).toBe(true);
@@ -155,9 +155,9 @@ test("POST /auth/login - valid request", async () => {
   sessionToken = response.headers["set-cookie"][0].split(";")[0].split("=")[1];
 });
 
-test("GET /auth/me", async () => {
+test("GET /me", async () => {
   const response = await supertest(app)
-    .get("/auth/me")
+    .get("/me")
     .set("Cookie", [`${config.app.cookiePrefix}_token=${sessionToken}`]);
 
   expect(response.body.success).toBe(true);
@@ -184,7 +184,7 @@ test("POST /auth/password - blank request without token", async () => {
 
   expect(response.status).toBe(200);
   expect(response.body.success).toBe(false);
-  expect(response.body.error.code).toBe(401);
+  expect(response.body.error.code).toBe(400);
 });
 
 test("POST /auth/login - login", async () => {

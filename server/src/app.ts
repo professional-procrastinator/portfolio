@@ -20,8 +20,10 @@ app.use(function (req, res, next) {
 
 //routes
 import authRouter from "./routes/auth";
+import meRouter from "./routes/me";
 
 app.use("/auth", authRouter);
+app.use("/me", meRouter);
 
 app.get("/", async (req: any, res: any) => {
   res.send("Hello World!");
