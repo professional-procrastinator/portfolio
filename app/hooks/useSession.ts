@@ -1,10 +1,11 @@
 import { useMainContext } from "./context/main";
 
 const useSession = () => {
-  const { user, setUser } = useMainContext() as any;
+  const { user, setUser, loading } = useMainContext() as any;
   return {
     user,
     setUser,
+    loading,
   };
 };
 

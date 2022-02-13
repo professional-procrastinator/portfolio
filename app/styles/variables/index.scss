@@ -1,17 +1,2 @@
 @import "./colors.scss";
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-* {
-  font-family: "Inter";
-}
-
-body,
-html {
-  margin: 0;
-  padding: 0;
-}
+@import "./components.scss";

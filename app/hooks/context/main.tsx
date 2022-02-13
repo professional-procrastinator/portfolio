@@ -1,33 +1,17 @@
 import React, { useState, useContext, createContext, useEffect } from "react";
 
-import {
-  updateUserTheme,
-  getUserTheme,
-  getUserData,
-  IUser,
-} from "./helpers/main";
+import { updateUserTheme, getUserData, IUser } from "./helpers/main";
 const Context = createContext({});
 
 const MainProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<IUser>();
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    async function getTheme() {
-      const data = await getUserTheme();
+    setLoading(true);
 
-      if (data.success) {
-        setUser(data.response.data);
-      }
-
-      if (data.error.code == 401) {
-        setTheme("light");
-      }
-    }
-
-    getTheme();
-
-    async function getUser() {
+    async function setData() {
       const data = await getUserData();
 
       if (data.success) {
@@ -37,26 +21,37 @@ const MainProvider = ({ children }: { children: React.ReactNode }) => {
       if (data.error.code == 401) {
         setUser(null!);
       }
+
+      if (user) {
+        setTheme(user.theme!);
+      } else {
+        setTheme(window.localStorage.getItem("theme")!);
+      }
+
+      return setLoading(false);
     }
 
-    getUser();
+    setData();
+
+    //eslint-disable-next-line
   }, []);
 
-  useEffect(() => {
-    if (!user) return;
+  const updateTheme = (newTheme: string) => {
+    if (!user) {
+      return window.localStorage.setItem("theme", newTheme);
+    }
 
     async function update() {
-      await updateUserTheme(theme);
+      await updateUserTheme(newTheme);
     }
 
-    if (user.theme !== theme) {
+    if (user.theme !== newTheme) {
       update();
     }
-    //eslint-disable-next-line
-  }, [theme]);
+  };
 
   return (
-    <Context.Provider value={{ user, theme, setTheme }}>
+    <Context.Provider value={{ user, loading, theme, updateTheme }}>
       {children}
     </Context.Provider>
   );

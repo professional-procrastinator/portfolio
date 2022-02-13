@@ -1,3 +1,5 @@
+@import "./variables/index.scss";
+
 html,
 body {
   padding: 0;
@@ -12,6 +14,5 @@ a {
 }
 
 * {
-  box-sizing: border-box;
   font-family: "Inter";
 }

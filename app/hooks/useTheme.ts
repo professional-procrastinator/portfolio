@@ -1,10 +1,10 @@
 import { useMainContext } from "./context/main";
 
 const useTheme = () => {
-  const { theme, setTheme } = useMainContext() as any;
+  const { theme, updateTheme } = useMainContext() as any;
   return {
     theme,
-    setTheme,
+    updateTheme,
   };
 };
 

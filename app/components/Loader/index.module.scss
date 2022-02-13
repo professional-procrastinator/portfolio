@@ -1,0 +1,22 @@
+.container {
+  display: block;
+
+  &__loader {
+    display: inline-block;
+    border: 3px solid var(--primary);
+    border-left-color: transparent;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    animation: load 0.5s linear infinite;
+  }
+}
+
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
