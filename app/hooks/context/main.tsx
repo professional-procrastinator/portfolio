@@ -1,44 +1,33 @@
-import React, { useState, useContext, createContext, useEffect } from "react";
+import React, { useState, useContext, createContext, useEffect } from 'react';
 
-import { updateUserTheme, getUserData, IUser } from "./helpers/main";
+import { updateUserTheme, getUserData, IUser } from './helpers/main';
 const Context = createContext({});
 
 const MainProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<IUser>();
-  const [theme, setTheme] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [theme, setTheme] = useState('dark');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-
-    async function setData() {
+    const init = async () => {
       const data = await getUserData();
 
-      if (data.success) {
-        setUser(data.response.data);
-      }
-
-      if (data.error.code == 401) {
+      if (data.error || !data.success) {
         setUser(null!);
+        return setLoading(false);
       }
 
-      if (user) {
-        setTheme(user.theme!);
-      } else {
-        setTheme(window.localStorage.getItem("theme")!);
-      }
+      setUser(data.response.data);
 
       return setLoading(false);
-    }
+    };
 
-    setData();
-
-    //eslint-disable-next-line
+    init();
   }, []);
 
-  const updateTheme = (newTheme: string) => {
+  const updateTheme = async (newTheme: string) => {
     if (!user) {
-      return window.localStorage.setItem("theme", newTheme);
+      return window.localStorage.setItem('theme', newTheme);
     }
 
     async function update() {
@@ -46,7 +35,7 @@ const MainProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     if (user.theme !== newTheme) {
-      update();
+      await update();
     }
   };
 

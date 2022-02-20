@@ -23,29 +23,5 @@ export default function Popup({
     setState(false);
   });
 
-  return (
-    <>
-      <div
-        className={cx(styles['popup-overlay'], {
-          [styles['popup-overlay--open']]: state,
-        })}
-      />
-      <div
-        className={
-          !isMobile
-            ? cx(className, {
-                [styles['popup']]: true,
-                [styles['popup--open']]: state,
-              })
-            : cx(className, {
-                [styles['popup--phone']]: true,
-                [styles['popup--phone--open']]: state,
-              })
-        }
-        ref={popupRef}
-      >
-        {children}
-      </div>
-    </>
-  );
+  return null;
 }

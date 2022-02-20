@@ -1,9 +1,9 @@
-import React from "react";
-import Head from "next/head";
+import React from 'react';
+import Head from 'next/head';
 
-import styles from "./index.module.scss";
-import Header from "../Header";
-import useSession from "../../hooks/useSession";
+import styles from './index.module.scss';
+import Header from '../Header';
+import useSession from '../../hooks/useSession';
 export default function Layout({
   children,
   title,
@@ -30,13 +30,17 @@ export default function Layout({
 
       <div
         className={styles.main}
-        {...(theme === "dark"
+        {...(theme === 'dark'
           ? {
               style: {
-                backgroundColor: "var(--background)",
+                backgroundColor: 'var(--background-dark)',
               },
             }
-          : {})}
+          : {
+              style: {
+                backgroundColor: 'var(--background-light)',
+              },
+            })}
       >
         {!loading ? <Header /> : null}
         {children}

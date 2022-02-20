@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect } from 'react';
 
 export default function useOnClickOutside(
   ref: React.RefObject<HTMLDivElement>,
@@ -16,9 +16,9 @@ export default function useOnClickOutside(
   );
 
   useEffect(() => {
-    document.addEventListener("click", handleClick, true);
+    document.addEventListener('click', handleClick, true);
     return () => {
-      document.removeEventListener("click", handleClick, true);
+      document.removeEventListener('click', handleClick, true);
     };
   }, [handleClick]);
 }

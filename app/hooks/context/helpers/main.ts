@@ -1,13 +1,13 @@
-import axios from "../../../utils/axios";
+import axios from '../../../utils/axios';
 
 export const updateUserTheme = async (theme: string) => {
-  const { data } = await axios.post("/me/theme", { theme });
+  const { data } = await axios.post('/me/theme', { theme });
 
   return data;
 };
 
 export const getUserTheme = async () => {
-  const { data } = await axios.get("/me");
+  const { data } = await axios.get('/me');
 
   return data;
 };
@@ -28,11 +28,7 @@ type User = {
 export type IUser = Partial<User>;
 
 export const getUserData = async () => {
-  const { data } = await axios.get("/me");
-
-  if (data.success) {
-    return data;
-  }
+  const { data } = await axios.get('/me');
 
   return data;
 };

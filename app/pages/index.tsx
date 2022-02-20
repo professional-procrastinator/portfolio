@@ -1,10 +1,10 @@
-import type { NextPage } from "next";
-import Layout from "../components/Layout";
+import type { NextPage } from 'next';
+import Layout from '../components/Layout';
 
-import useTheme from "../hooks/useTheme";
-import useSession from "../hooks/useSession";
-import Loader from "../components/Loader";
-import Landing from "../modules/Landing";
+import useTheme from '../hooks/useTheme';
+import useSession from '../hooks/useSession';
+import Loader from '../components/Loader';
+import Landing from '../modules/Landing';
 
 const Home: NextPage = () => {
   const { theme, updateTheme } = useTheme();
@@ -12,15 +12,15 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Layout title="Home" theme={"dark"}>
+      <Layout title="Home" theme={theme}>
         {loading && <Loader containerStyles={LoaderStyles} />}
-        {!loading && !user && <Landing />}
+        {!loading && <Landing />}
       </Layout>
     </>
   );
 };
 
 const LoaderStyles = {
-  margin: "auto",
+  margin: 'auto',
 };
 export default Home;

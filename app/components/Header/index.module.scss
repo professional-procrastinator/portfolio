@@ -1,7 +1,30 @@
 .header {
   display: flex;
-  height: auto;
+  padding: 50px;
+  width: 45%;
 
-  padding: 35px 50px;
-  background-color: var(--background);
+  margin: 0 auto 0 auto;
+
+  &__links {
+    margin: auto 0 auto auto;
+    display: flex;
+    gap: 30px;
+
+    &__link {
+      font-weight: 500;
+      color: var(--grey-300);
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  &__logo {
+    margin: auto auto auto 0;
+
+    cursor: pointer;
+  }
 }

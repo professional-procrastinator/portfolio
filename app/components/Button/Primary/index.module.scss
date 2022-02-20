@@ -1,18 +1,19 @@
 .button {
-  width: fit-content;
-  padding: 16px 30px;
-  font-weight: 600;
-  font-size: 20px;
+  width: 200px;
+  height: 50px;
+
+  font-weight: 500;
+  font-size: 16px;
   background-color: var(--primary);
-  color: var(--background);
+  color: white;
   border: none;
-  border-radius: 55px;
+  border-radius: 10px;
   transition: var(--scale-transition);
   cursor: pointer;
   box-shadow: var(--primary-shadow);
 
   &:hover {
-    background-color: #588fa0;
+    background-color: var(--primary-dark);
   }
 
   &:active {
