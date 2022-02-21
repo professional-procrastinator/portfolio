@@ -12,7 +12,6 @@ export default function TypeWriter({
   const [blink, setBlink] = useState(true);
   const [reverse, setReverse] = useState(false);
 
-  // typeWriter
   useEffect(() => {
     if (index === words.length - 1 && subIndex === words[index].length) {
       return;
@@ -42,7 +41,6 @@ export default function TypeWriter({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subIndex, index, reverse]);
 
-  // blinker
   useEffect(() => {
     const timeout2 = setTimeout(() => {
       setBlink((prev) => !prev);

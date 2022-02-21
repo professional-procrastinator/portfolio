@@ -2,7 +2,7 @@
   display: flex;
   flex-flow: column;
 
-  width: 45%;
+  width: 50%;
   margin: 0 auto;
   padding: 0;
 
@@ -13,8 +13,37 @@
       font-size: 40px;
     }
 
+    &__description {
+      margin-top: 10px;
+      color: var(--grey-400);
+      font-weight: 500;
+      font-size: 20px;
+      width: 80%;
+    }
+
     @media screen and (max-width: 928px) {
       margin: 0 40px;
+    }
+
+    &__body {
+      margin-top: 40px;
+      display: flex;
+      flex-flow: column;
+
+      &__header {
+        display: flex;
+
+        &__heading {
+          color: white;
+          font-weight: 700;
+          font-size: 24px;
+          margin: auto auto auto 0;
+        }
+
+        &__action {
+          margin: auto 0 auto auto;
+        }
+      }
     }
   }
 

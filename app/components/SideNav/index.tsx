@@ -1,13 +1,14 @@
 import styles from './index.module.scss';
 import classNames from 'classnames/bind';
-import Icon from '../../public/icon.svg';
+import Logo from '../../public/icon.svg';
 import Hamburger from '../../public/icons/hamburger.svg';
 import { useRef, useState } from 'react';
 import HomeIcon from '../../public/icons/home.svg';
-
+import ProjectsIcon from '../../public/icons/projects.svg';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { Icon } from '@iconify/react';
 const cx = classNames.bind(styles);
 
 export default function SideNav() {
@@ -47,7 +48,7 @@ export default function SideNav() {
             }}
             className={styles.sideNav__body__logo}
           >
-            <Icon />
+            <Logo />
           </div>
 
           <div className={styles.sideNav__body__links}>
@@ -60,7 +61,12 @@ export default function SideNav() {
                 })}
               >
                 <div className={styles.sideNav__body__links__link__icon}>
-                  <HomeIcon />
+                  <Icon
+                    color="#9e9e9e"
+                    width={32}
+                    height={32}
+                    icon="mdi-light:home"
+                  />
                 </div>
 
                 <div className={styles.sideNav__body__links__link__label}>
@@ -78,11 +84,39 @@ export default function SideNav() {
                 })}
               >
                 <div className={styles.sideNav__body__links__link__icon}>
-                  <HomeIcon />
+                  <Icon
+                    color="#9e9e9e"
+                    width={32}
+                    height={32}
+                    icon="mdi-light:star"
+                  />
                 </div>
 
                 <div className={styles.sideNav__body__links__link__label}>
                   My Projects
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/guestbook" passHref>
+              <div
+                className={cx({
+                  [styles.sideNav__body__links__link]: true,
+                  [styles['sideNav__body__links__link--active']]:
+                    router.pathname === '/guestbook',
+                })}
+              >
+                <div className={styles.sideNav__body__links__link__icon}>
+                  <Icon
+                    color="#9e9e9e"
+                    width={32}
+                    height={32}
+                    icon="mdi-light:pencil"
+                  />
+                </div>
+
+                <div className={styles.sideNav__body__links__link__label}>
+                  The Guestbook
                 </div>
               </div>
             </Link>
