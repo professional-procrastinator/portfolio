@@ -4,6 +4,8 @@ import Head from 'next/head';
 import styles from './index.module.scss';
 import Header from '../Header';
 import useSession from '../../hooks/useSession';
+import FAB from '../Button/Fab';
+import Blocks from '../../public/icons/blocks.svg';
 export default function Layout({
   children,
   title,
@@ -44,6 +46,10 @@ export default function Layout({
       >
         {!loading ? <Header /> : null}
         {children}
+
+        <FAB className="contact">
+          <Blocks />
+        </FAB>
       </div>
     </>
   );

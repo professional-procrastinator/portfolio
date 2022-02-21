@@ -1,0 +1,44 @@
+//sidenav slide in and out
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--overlay-color);
+  z-index: 1;
+  transform: all 0.2s;
+  opacity: 0;
+  display: none;
+  transition: all 0.2s;
+}
+
+.overlay-open {
+  opacity: 1;
+  display: block;
+}
+
+.sideNav {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40%;
+  z-index: 3000;
+  height: 100%;
+  background-color: var(--sidenav-color);
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.sideNav-open {
+  transform: translateX(0);
+}
+
+.hamburger {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  z-index: 200;
+  cursor: pointer;
+}

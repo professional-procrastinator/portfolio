@@ -1,12 +1,16 @@
 import styles from './index.module.scss';
 import Image from 'next/image';
 import Icon from '../../public/icon.svg';
+
 import { useMediaQuery } from 'react-responsive';
 import Primary from '../Button/Primary';
 import Link from 'next/link';
+import SideNav from '../SideNav';
+import { useState } from 'react';
 
 export default function Header() {
   const isMobile = useMediaQuery({ maxWidth: '928px' });
+  const [sideNavOpen, setSideNavOpen] = useState(false);
 
   if (!isMobile) {
     return (
@@ -21,7 +25,11 @@ export default function Header() {
       </header>
     );
   }
-  return <Icon />;
+  return (
+    <>
+      <SideNav />
+    </>
+  );
 }
 
 const Logo = () => {
