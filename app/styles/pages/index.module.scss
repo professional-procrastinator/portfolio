@@ -1,0 +1,24 @@
+.main {
+  display: flex;
+  flex-flow: column;
+
+  width: 45%;
+  margin: 0 auto;
+  padding: 0;
+
+  &__content {
+    &__heading {
+      color: white;
+      font-weight: 700;
+      font-size: 40px;
+    }
+
+    @media screen and (max-width: 928px) {
+      margin: 0 40px;
+    }
+  }
+
+  @media screen and (max-width: 928px) {
+    width: 100%;
+  }
+}

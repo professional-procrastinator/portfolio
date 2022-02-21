@@ -7,10 +7,21 @@ import { useState } from 'react';
 import Popup from '../../components/Popup';
 import FAB from '../../components/Button/Fab';
 import Icon from '../../public/icons/blocks.svg';
+import TypeWriter from '../../components/TypeWriter';
+import pageStyles from '../../styles/pages/index.module.scss';
+
 export default function Landing() {
+  const words = ['a developer', 'a designer', 'a math enthusiast.'];
+
   return (
     <>
-      <div className={styles.main}></div>
+      <div className={pageStyles.main}>
+        <div className={pageStyles.main__content}>
+          <div className={pageStyles.main__content__heading}>
+            <TypeWriter prefix="I am" words={words} />
+          </div>
+        </div>
+      </div>
     </>
   );
 }

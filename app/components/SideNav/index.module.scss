@@ -20,15 +20,77 @@
 
 .sideNav {
   display: flex;
+  flex-flow: column;
   position: fixed;
   top: 0;
   left: 0;
+  min-width: 300px;
   width: 40%;
   z-index: 3000;
   height: 100%;
   background-color: var(--sidenav-color);
   transform: translateX(-100%);
   transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 120px;
+    align-items: center;
+    gap: 60px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--sidenav-color);
+
+    &__logo {
+      cursor: pointer;
+    }
+
+    &__links {
+      margin-top: 40px;
+      display: flex;
+      flex-flow: column;
+      width: 100%;
+      gap: 10px;
+
+      &__link {
+        padding: 12px;
+        display: flex;
+        gap: 16px;
+        margin: 0px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s;
+        animation: link 0.2s forwards;
+
+        &:hover {
+          background-color: rgba(109, 97, 97, 0.1);
+        }
+
+        &__icon {
+          margin: auto 0 auto 0;
+        }
+
+        &__label {
+          font-size: 20px;
+          font-weight: 500;
+          color: var(--grey-300);
+          transition: all 0.2s;
+          margin: auto auto auto 0;
+        }
+      }
+
+      &__link--active {
+        border-radius: 6px;
+        background-color: rgba(#1a1919, 0.79);
+        transition: all 0.2s;
+
+        &:hover {
+          background-color: rgba(#1a1919, 0.79);
+        }
+      }
+    }
+  }
 }
 
 .sideNav-open {
@@ -36,9 +98,15 @@
 }
 
 .hamburger {
-  position: absolute;
-  top: 40px;
-  left: 40px;
-  z-index: 200;
+  margin: 40px;
   cursor: pointer;
+}
+
+@keyframes link {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
