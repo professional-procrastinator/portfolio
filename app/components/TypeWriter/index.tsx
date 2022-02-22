@@ -13,10 +13,6 @@ export default function TypeWriter({
   const [reverse, setReverse] = useState(false);
 
   useEffect(() => {
-    if (index === words.length - 1 && subIndex === words[index].length) {
-      return;
-    }
-
     if (
       subIndex === words[index].length + 1 &&
       index !== words.length - 1 &&

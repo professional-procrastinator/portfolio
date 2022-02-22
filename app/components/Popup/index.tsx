@@ -9,19 +9,41 @@ export default function Popup({
   state,
   children,
   className,
-  setState,
+  close,
 }: {
   state: boolean;
   children: React.ReactNode;
   className?: string;
-  setState: (state: boolean) => void;
+  close: () => void;
 }) {
   const popupRef = useRef(null);
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
   useOnClickOutside(popupRef, () => {
-    setState(false);
+    close();
   });
 
-  return null;
+  return (
+    <>
+      <div
+        className={cx(styles['popup-overlay'], {
+          [styles['popup-overlay--open']]: state,
+        })}
+      />
+      <div
+        className={
+          isMobile
+            ? cx(styles['popup--phone'], className, {
+                [styles['popup--phone--open']]: state,
+              })
+            : cx(styles.popup, className, {
+                [styles['popup--open']]: state,
+              })
+        }
+        ref={popupRef}
+      >
+        {children}
+      </div>
+    </>
+  );
 }

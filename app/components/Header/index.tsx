@@ -7,6 +7,9 @@ import Primary from '../Button/Primary';
 import Link from 'next/link';
 import SideNav from '../SideNav';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
+import classNames from 'classnames/bind';
+const cx = classNames.bind(styles);
 
 export default function Header() {
   const isMobile = useMediaQuery({ maxWidth: '928px' });
@@ -46,14 +49,17 @@ const Logo = () => {
 };
 
 const HeaderLinks = () => {
+  const router = useRouter();
   const links = [
     {
       target: 'projects',
       label: 'My Projects',
+      active: router.pathname === '/projects',
     },
     {
       target: 'guestbook',
       label: 'The Guestbook',
+      active: router.pathname === '/guestbook',
     },
   ];
 
@@ -62,7 +68,13 @@ const HeaderLinks = () => {
       {links.map((link, i) => {
         return (
           <Link passHref key={i} href={link.target}>
-            <div className={styles.header__links__link}>{link.label}</div>
+            <div
+              className={cx(styles.header__links__link, {
+                [styles['header__links__link--active']]: link.active,
+              })}
+            >
+              {link.label}
+            </div>
           </Link>
         );
       })}
