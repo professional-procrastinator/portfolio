@@ -1,13 +1,12 @@
-import Auth from "../middleware/auth/auth";
-import { Router } from "express";
+import Auth from '../middleware/auth/auth';
+import { Router } from 'express';
 
 //init
 const meRouter = Router();
-import { redisClient } from "../config";
+import { redisClient } from '../config';
 
-import { Me, ThemePreference } from "../controllers/me";
+import { Me } from '../controllers/me';
 
-meRouter.get("/", Auth, Me);
-meRouter.post("/theme", Auth, Me);
+meRouter.get('/', Auth, Me);
 
 export default meRouter;

@@ -10,64 +10,84 @@ import FAB from '../components/Button/Fab';
 import styles from '../styles/pages/guestbook.module.scss';
 
 import Visitors from '../modules/Guestbook/Visitors';
+import useSession from '../hooks/useSession';
+import Loader from '../components/Loader';
 const GuestBook = () => {
   const [isSignPopupOpen, setSignPopupOpen] = useState(false);
   const isSmallMobile = useMediaQuery({ maxWidth: '528px' });
+  const { user, setUser, loading } = useSession();
 
   return (
     <Layout theme={'dark'} title="The Guestbook">
-      <div className={pageStyles.main}>
-        <div className={pageStyles.main__content}>
-          <div className={pageStyles.main__content__heading}>The Guestbook</div>
-
-          <div className={pageStyles.main__content__description}>
-            Here’s the guestbook. Sign in with a provider and leave a comment.
-            Only your name and comment will be shown.{' '}
-          </div>
-
-          <div className={pageStyles.main__content__body}>
-            <div className={pageStyles.main__content__body__header}>
-              <div className={pageStyles.main__content__body__header__heading}>
-                Previous Visitors
+      {loading && <Loader containerStyles={LoaderStyles} />}
+      {!loading && (
+        <div>
+          <div className={pageStyles.main}>
+            <div className={pageStyles.main__content}>
+              <div className={pageStyles.main__content__heading}>
+                The Guestbook
               </div>
 
-              <div className={pageStyles.main__content__body__header__action}>
-                {!isSmallMobile ? (
-                  <Primary
-                    onClick={() => {
-                      setSignPopupOpen(true);
-                    }}
+              <div className={pageStyles.main__content__description}>
+                Here’s the guestbook. Sign in with a provider and leave a
+                comment. Only your name and comment will be shown.{' '}
+              </div>
+
+              <div className={pageStyles.main__content__body}>
+                <div className={pageStyles.main__content__body__header}>
+                  <div
+                    className={pageStyles.main__content__body__header__heading}
                   >
-                    Sign the Guestbook
-                  </Primary>
-                ) : (
-                  <FAB
-                    onClick={() => {
-                      setSignPopupOpen(true);
-                    }}
-                    className={styles['sign-fab']}
+                    Previous Visitors
+                  </div>
+
+                  <div
+                    className={pageStyles.main__content__body__header__action}
                   >
-                    <Icon icon="mdi:pencil" width={28} color="#ffffff" />
-                  </FAB>
-                )}
+                    {!isSmallMobile ? (
+                      <Primary
+                        onClick={() => {
+                          setSignPopupOpen(true);
+                        }}
+                      >
+                        Sign the Guestbook
+                      </Primary>
+                    ) : (
+                      <FAB
+                        onClick={() => {
+                          setSignPopupOpen(true);
+                        }}
+                        className={styles['sign-fab']}
+                      >
+                        <Icon icon="mdi:pencil" width={28} color="#ffffff" />
+                      </FAB>
+                    )}
+                  </div>
+                </div>
+
+                <Visitors />
               </div>
             </div>
-
-            <Visitors />
           </div>
-        </div>
-      </div>
 
-      <Popup
-        close={() => {
-          setSignPopupOpen(false);
-        }}
-        state={isSignPopupOpen}
-      >
-        <Sign />
-      </Popup>
+          <Popup
+            close={() => {
+              setSignPopupOpen(false);
+            }}
+            state={isSignPopupOpen}
+          >
+            <Sign />
+          </Popup>
+
+          {!user && <h2>Not logged in.</h2>}
+        </div>
+      )}
     </Layout>
   );
 };
 
 export default GuestBook;
+
+const LoaderStyles = {
+  margin: 'auto',
+};

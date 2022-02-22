@@ -1,7 +1,7 @@
-import { NextFunction } from "express";
-import { config } from "../../config";
-import IResponse from "../../@types/response";
-import jwt from "jsonwebtoken";
+import { NextFunction } from 'express';
+import { config } from '../../config';
+import IResponse from '../../@types/response';
+import jwt from 'jsonwebtoken';
 
 const Auth = (req: any, res: any, next: NextFunction) => {
   const token = req.cookies[`${config.app.cookiePrefix}_token`];
@@ -17,18 +17,16 @@ const Auth = (req: any, res: any, next: NextFunction) => {
   } catch (err) {
     const response: IResponse = {
       success: false,
-      message: "Invalid token",
+      message: 'Invalid token',
       error: {
         code: 401,
-        details: "Invalid JWT token",
+        details: 'Invalid JWT token',
       },
     };
     res.status(200).json(response);
 
     return next();
   }
-
-  return next();
 };
 
 export default Auth;

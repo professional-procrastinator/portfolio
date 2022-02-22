@@ -8,19 +8,14 @@ import Landing from '../modules/Landing';
 
 const Home: NextPage = () => {
   const { theme, updateTheme } = useTheme();
-  const { user, setUser, loading } = useSession();
 
   return (
     <>
       <Layout title="Home" theme={theme}>
-        {loading && <Loader containerStyles={LoaderStyles} />}
-        {!loading && <Landing />}
+        <Landing />
       </Layout>
     </>
   );
 };
 
-const LoaderStyles = {
-  margin: 'auto',
-};
 export default Home;
