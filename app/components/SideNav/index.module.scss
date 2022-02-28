@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--overlay-color);
+  background-color: var(--overlay-color-dark);
   z-index: 1;
   transform: all 0.2s;
   opacity: 0;
@@ -28,7 +28,7 @@
   width: 40%;
   z-index: 3000;
   height: 100%;
-  background-color: var(--sidenav-color);
+  background-color: var(--sidenav-color-dark);
   transform: translateX(-100%);
   transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 
@@ -40,7 +40,6 @@
     gap: 60px;
     width: 100%;
     height: 100%;
-    background-color: var(--sidenav-color);
 
     &__logo {
       cursor: pointer;
@@ -83,11 +82,11 @@
 
       &__link--active {
         border-radius: 6px;
-        background-color: rgba(#1a1919, 0.79);
+        background-color: rgba(109, 97, 97, 0.1);
         transition: all 0.2s;
 
         &:hover {
-          background-color: rgba(#1a1919, 0.79);
+          background-color: rgba(109, 97, 97, 0.1);
         }
       }
     }

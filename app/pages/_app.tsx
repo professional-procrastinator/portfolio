@@ -1,15 +1,19 @@
 import '../styles/globals.scss';
 import type { AppProps } from 'next/app';
-import NextNprogress from 'nextjs-progressbar';
+import NextNProgress from 'nextjs-progressbar';
+import { SettingsProvider } from '../hooks/context/settings';
 
-import { MainProvider } from '../hooks/context/main';
-
+import { SessionProvider } from 'next-auth/react';
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <MainProvider>
-      <NextNprogress color="#ffffff" />
-      <Component {...pageProps} />
-    </MainProvider>
+    <>
+      <SessionProvider>
+        <SettingsProvider>
+          <NextNProgress color="#ffffff" />
+          <Component {...pageProps} />
+        </SettingsProvider>
+      </SessionProvider>
+    </>
   );
 }
 

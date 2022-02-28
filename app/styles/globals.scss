@@ -4,28 +4,21 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
 * {
+  box-sizing: border-box;
   font-family: 'Inter';
-
-  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
 ::selection {
   background: #ffffff;
   color: var(--background-dark);
-}
-
-.contact {
-  position: absolute;
-  bottom: 50px;
-  right: 50px;
 }

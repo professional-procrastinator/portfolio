@@ -1,22 +1,21 @@
 .button {
   width: 200px;
   height: 50px;
-
   font-weight: 500;
   font-size: 16px;
   background-color: var(--primary);
   color: white;
   border: none;
   border-radius: 10px;
-  transition: var(--scale-transition);
+  transition: var(--primary-button-scale-transition);
   cursor: pointer;
-  box-shadow: var(--primary-shadow);
+  box-shadow: var(--primary-button-shadow);
 
   &:hover {
     background-color: var(--primary-dark);
   }
 
   &:active {
-    transform: var(--scale-size-active);
+    transform: var(--primary-button-scale-size-active);
   }
 }

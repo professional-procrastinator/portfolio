@@ -1,20 +1,13 @@
-import type { NextPage } from 'next';
+import { NextPage } from 'next';
+import Link from 'next/link';
+import { useEffect } from 'react';
 import Layout from '../components/Layout';
 
-import useTheme from '../hooks/useTheme';
-import useSession from '../hooks/useSession';
-import Loader from '../components/Loader';
-import Landing from '../modules/Landing';
-
 const Home: NextPage = () => {
-  const { theme, updateTheme } = useTheme();
-
   return (
-    <>
-      <Layout title="Home" theme={theme}>
-        <Landing />
-      </Layout>
-    </>
+    <Layout title="Home">
+      <p>Hello Next.js 👋</p>
+    </Layout>
   );
 };
 
