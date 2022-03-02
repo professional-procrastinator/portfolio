@@ -17,8 +17,20 @@ a {
   box-sizing: border-box;
   font-family: 'Inter';
 }
-
+*,
+:after,
+:before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
 ::selection {
   background: #ffffff;
   color: var(--background-dark);
+}
+
+.ripple {
+  background-color: red;
 }

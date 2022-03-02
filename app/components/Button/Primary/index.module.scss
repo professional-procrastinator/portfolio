@@ -6,7 +6,7 @@
   background-color: var(--primary);
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--primary-button-border-radius);
   transition: var(--primary-button-scale-transition);
   cursor: pointer;
   box-shadow: var(--primary-button-shadow);

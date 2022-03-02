@@ -6,11 +6,15 @@ import PageStyles from '../../styles/shared/page.module.scss';
 
 import Loader from '../../components/Loader';
 import Primary from '../../components/Button/Primary';
+import { useState } from 'react';
+import Popup from '../../components/Popup';
+import Sign from './Sign';
 
 export default function Guestbook() {
   const { data, status } = useSession();
   const isSmallMobile = useMediaQuery({ maxWidth: '528px' });
 
+  const [isSignPopupOpen, setSignPopupOpen] = useState(false);
   return (
     <>
       {status === 'loading' ? (
@@ -48,15 +52,37 @@ export default function Guestbook() {
                     className={PageStyles.main__content__body__header__action}
                   >
                     {!isSmallMobile ? (
-                      <Primary>Sign the Guestbook</Primary>
+                      <Primary
+                        onClick={() => {
+                          setSignPopupOpen(true);
+                        }}
+                      >
+                        Sign the Guestbook
+                      </Primary>
                     ) : (
-                      <Icon icon="mdi:pencil" width={28} color="#ffffff" />
+                      <Icon
+                        onClick={() => {
+                          setSignPopupOpen(true);
+                        }}
+                        icon="mdi:pencil"
+                        width={28}
+                        color="#ffffff"
+                      />
                     )}
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <Popup
+            close={() => {
+              setSignPopupOpen(false);
+            }}
+            state={isSignPopupOpen}
+          >
+            <Sign />
+          </Popup>
         </>
       )}
     </>

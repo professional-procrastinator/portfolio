@@ -11,15 +11,13 @@ const cx = classNames.bind(styles);
 
 export default function Header() {
   const isMobile = useMediaQuery({ maxWidth: '928px' });
-  const [sideNavOpen, setSideNavOpen] = useState(false);
 
   if (!isMobile) {
     return (
       <header className={styles.header}>
         <Link href="/" passHref>
-          <Icon className={styles.header__logo__src} />
+          <Icon className={styles.header__logo} />
         </Link>
-        <div className={styles.header__logo}></div>
 
         <HeaderLinks />
       </header>
