@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document';
+import Banner from '../public/banner.png';
 
 export default function Document() {
   return (
@@ -17,7 +18,10 @@ export default function Document() {
         <meta property="og:url" content="https://nishitjha.vercel.app" />
         <meta property="og:title" content="Nishit Jha" />
         <meta property="og:description" content="My portfolio" />
-        <meta property="og:image" content="../public/banner.png" />
+        <meta
+          property="og:image"
+          content="https://media.discordapp.net/attachments/945275718793834526/948948146942259260/unknown.png"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="628" />
 
@@ -25,7 +29,10 @@ export default function Document() {
         <meta property="twitter:url" content="https://nishitjha.vercel.app" />
         <meta property="twitter:title" content="Nishit Jha" />
         <meta property="twitter:description" content="My portfolio" />
-        <meta property="twitter:image" content="../public/banner.png" />
+        <meta
+          property="twitter:image"
+          content="https://media.discordapp.net/attachments/945275718793834526/948948146942259260/unknown.png"
+        />
       </Head>
       <body>
         <Main />
