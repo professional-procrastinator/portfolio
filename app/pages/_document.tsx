@@ -17,7 +17,7 @@ export default function Document() {
         <meta property="og:url" content="https://nishitjha.vercel.app" />
         <meta property="og:title" content="Nishit Jha" />
         <meta property="og:description" content="My portfolio" />
-        <meta property="og:image" content="./public/banner.png" />
+        <meta property="og:image" content="../public/banner.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="628" />
 
@@ -25,7 +25,7 @@ export default function Document() {
         <meta property="twitter:url" content="https://nishitjha.vercel.app" />
         <meta property="twitter:title" content="Nishit Jha" />
         <meta property="twitter:description" content="My portfolio" />
-        <meta property="twitter:image" content="./public/banner.png" />
+        <meta property="twitter:image" content="../public/banner.png" />
       </Head>
       <body>
         <Main />
