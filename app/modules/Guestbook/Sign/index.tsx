@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import TextField from '../../../components/TextField';
+import TypeWriter from '../../../components/TypeWriter';
 import styles from '../../../styles/shared/popup.module.scss';
 
 export default function Sign() {
@@ -15,7 +16,9 @@ export default function Sign() {
       </div>
 
       <div className={styles.popup__content}>
-        <div className={styles.popup__content__heading}>Sign the Guestbook</div>
+        <div className={styles.popup__content__heading}>
+          <TypeWriter words={['Some words for the chef?']} />
+        </div>
 
         <TextField textarea label={'Your Message'} />
       </div>

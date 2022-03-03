@@ -27,8 +27,9 @@
   border-radius: 6px;
   outline: none;
   transition: all 0.2s;
-  color: var(--primary-light);
+  color: var(--white);
   font-size: 15px;
+  font-weight: 400;
 
   &:focus {
     border: 2px solid var(--primary-light);
@@ -38,7 +39,6 @@
 .label--focused {
   top: 2px;
   left: 12px;
-  color: var(--white);
 
   padding: 0px 3px;
 }

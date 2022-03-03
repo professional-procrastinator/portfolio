@@ -16,7 +16,7 @@ export default function Popup({
 }) {
   const popupRef = useRef(null);
   const isMobile = useMediaQuery({ maxWidth: '1069px' });
-  //69 is funny
+  //69 is funny (yes)
 
   useOnClickOutside(popupRef, () => {
     close();
