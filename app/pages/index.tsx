@@ -1,14 +1,15 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import Home from '../modules/Home';
 import Layout from '../components/Layout';
 
-const Home: NextPage = () => {
+const Main: NextPage = () => {
   return (
-    <Layout title="Home">
-      <p>Hello Next.js 👋</p>
+    <Layout title="Nishit Jha">
+      <Home />
     </Layout>
   );
 };
 
-export default Home;
+export default Main;

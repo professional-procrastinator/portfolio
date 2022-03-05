@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 export default function useOnClickOutside(
   ref: React.RefObject<HTMLDivElement>,
@@ -15,8 +15,15 @@ export default function useOnClickOutside(
     [handler, ref]
   );
 
+  const handleKeyDown = (e: any) => {
+    if (e.key === 'Escape') {
+      return handler(e);
+    }
+  };
+
   useEffect(() => {
     document.addEventListener('click', handleClick, true);
+    document.addEventListener('keydown', handleKeyDown, true);
     return () => {
       document.removeEventListener('click', handleClick, true);
     };

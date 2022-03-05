@@ -4,18 +4,20 @@ import { useState } from 'react';
 const cx = classNames.bind(styles);
 export default function TextField({
   className,
-  onChange,
   label,
   value,
+  setValue,
   type,
   textarea,
+  limit,
 }: {
   className?: string;
-  onChange?: (value: string) => void;
   label?: string;
   value?: string;
+  setValue?: (value: string) => void;
   type?: string;
   textarea?: boolean;
+  limit?: number;
 }) {
   const [isFocused, setIsFocused] = useState(false);
   return (
@@ -28,15 +30,27 @@ export default function TextField({
       >
         {label}
       </span>
+
+      <span
+        className={cx({
+          [styles.count]: true,
+        })}
+      >
+        <p>{value?.length}</p>/<p>{limit}</p>
+      </span>
       {textarea ? (
         <textarea
-          className={styles.textfield}
           value={value}
           onChange={(e) => {
-            if (onChange) {
-              onChange(e.target.value);
+            if (e.target.value.length > limit!) {
+              return;
             }
+            setValue ? setValue(e.target.value) : null;
           }}
+          className={cx(className, {
+            [styles.textfield]: true,
+            [styles['textfield--focused']]: isFocused,
+          })}
           onFocus={(e) => {
             setIsFocused(true);
           }}
@@ -45,17 +59,23 @@ export default function TextField({
               return;
             }
             setIsFocused(false);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') {
+              setIsFocused(false);
+            }
           }}
         />
       ) : (
         <input
-          className={styles.textfield}
+          className={cx(className, {
+            [styles.textfield]: true,
+            [styles['textfield--focused']]: isFocused,
+          })}
           type={type}
           value={value}
           onChange={(e) => {
-            if (onChange) {
-              onChange(e.target.value);
-            }
+            setValue ? setValue(e.target.value) : null;
           }}
           onFocus={(e) => {
             setIsFocused(true);
@@ -65,6 +85,11 @@ export default function TextField({
               return;
             }
             setIsFocused(false);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') {
+              setIsFocused(false);
+            }
           }}
         />
       )}
