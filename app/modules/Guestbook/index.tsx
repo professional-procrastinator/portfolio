@@ -9,6 +9,7 @@ import Primary from '../../components/Button/Primary';
 import { useState } from 'react';
 import Popup from '../../components/Popup';
 import Sign from './Sign';
+import TextButton from '../../components/Button/Text';
 
 export default function Guestbook() {
   const { data, status } = useSession();
@@ -17,17 +18,7 @@ export default function Guestbook() {
   const [isSignPopupOpen, setSignPopupOpen] = useState(false);
   return (
     <>
-      {status === 'loading' ? (
-        <Loader
-          containerStyles={{
-            margin: 'auto',
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
-        />
-      ) : (
+      {status === 'loading' ? null : (
         <>
           <div className={PageStyles.main}>
             <div className={PageStyles.main__content}>
@@ -53,23 +44,13 @@ export default function Guestbook() {
                   >
                     {!isSmallMobile ? (
                       <>
-                        {data?.user ? (
-                          <Primary
-                            onClick={() => {
-                              signOut();
-                            }}
-                          >
-                            Sign out
-                          </Primary>
-                        ) : (
-                          <Primary
-                            onClick={() => {
-                              setSignPopupOpen(true);
-                            }}
-                          >
-                            Sign the Guestbook
-                          </Primary>
-                        )}
+                        <Primary
+                          onClick={() => {
+                            setSignPopupOpen(true);
+                          }}
+                        >
+                          Sign the Guestbook
+                        </Primary>
                       </>
                     ) : (
                       <Icon

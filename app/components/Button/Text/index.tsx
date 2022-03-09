@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import ButtonStyles from './index.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(ButtonStyles);
-export default function Primary({
+export default function TextButton({
   children,
   className,
   onClick,
@@ -14,13 +14,14 @@ export default function Primary({
   danger?: boolean;
 }) {
   return (
-    <button
+    <div
       className={cx(className, {
         button: true,
+        'button--danger': danger,
       })}
       onClick={onClick}
     >
       {children}
-    </button>
+    </div>
   );
 }

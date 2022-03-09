@@ -7,6 +7,8 @@ import SideNav from '../SideNav';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import classNames from 'classnames/bind';
+import { signOut, useSession } from 'next-auth/react';
+import TextButton from '../Button/Text';
 const cx = classNames.bind(styles);
 
 export default function Header() {
@@ -32,6 +34,7 @@ export default function Header() {
 
 const HeaderLinks = () => {
   const router = useRouter();
+  const { data, status } = useSession();
   const links = [
     {
       target: 'projects',
@@ -60,6 +63,19 @@ const HeaderLinks = () => {
           </Link>
         );
       })}
+      {router.pathname === '/guestbook' &&
+      status !== 'loading' &&
+      data?.user ? (
+        <TextButton
+          onClick={() => {
+            signOut();
+          }}
+          danger
+          className={styles.guestbook__signout}
+        >
+          Sign out
+        </TextButton>
+      ) : null}
     </div>
   );
 };

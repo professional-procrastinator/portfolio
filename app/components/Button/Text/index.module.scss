@@ -1,0 +1,20 @@
+.button {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: white;
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--primary-dark);
+  }
+}
+
+.button--danger {
+  color: var(--danger-button-text);
+
+  &:hover {
+    background-color: var(--danger-button-bg);
+  }
+}

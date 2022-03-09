@@ -11,6 +11,11 @@ export default function Home() {
           <div className={PageStyles.main__content__heading}>
             <TypeWriter prefix="I am" words={words} />
           </div>
+
+          <div className={PageStyles.main__content__description}>
+            Hey there! I'm Nishit Jha, a 13 year old developer and designer. I
+            love to build web apps, and work with the MERN stack.{' '}
+          </div>
         </div>
       </div>
     </>
