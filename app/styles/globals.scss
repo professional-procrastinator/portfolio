@@ -17,6 +17,7 @@ a {
   box-sizing: border-box;
   font-family: 'Inter';
 }
+
 *,
 :after,
 :before {
@@ -26,9 +27,22 @@ a {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 ::selection {
   background: #ffffff;
   color: var(--background-dark);
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
 }
 
 .ripple {

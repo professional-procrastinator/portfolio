@@ -1,4 +1,4 @@
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { useMediaQuery } from 'react-responsive';
 import { Icon } from '@iconify/react';
 
@@ -52,13 +52,25 @@ export default function Guestbook() {
                     className={PageStyles.main__content__body__header__action}
                   >
                     {!isSmallMobile ? (
-                      <Primary
-                        onClick={() => {
-                          setSignPopupOpen(true);
-                        }}
-                      >
-                        Sign the Guestbook
-                      </Primary>
+                      <>
+                        {data?.user ? (
+                          <Primary
+                            onClick={() => {
+                              signOut();
+                            }}
+                          >
+                            Sign out
+                          </Primary>
+                        ) : (
+                          <Primary
+                            onClick={() => {
+                              setSignPopupOpen(true);
+                            }}
+                          >
+                            Sign the Guestbook
+                          </Primary>
+                        )}
+                      </>
                     ) : (
                       <Icon
                         onClick={() => {

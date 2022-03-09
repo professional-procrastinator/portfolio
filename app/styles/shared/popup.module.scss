@@ -19,15 +19,31 @@
     display: flex;
     flex-flow: column;
 
-    &__heading {
-      font-size: 30px;
-      font-weight: 700;
-      color: white;
+    &__header {
+      &__heading {
+        font-size: 30px;
+        font-weight: 700;
+        color: white;
+      }
+
+      &__description {
+        font-size: 17px;
+        width: 80%;
+        font-weight: 500;
+        line-height: 140%;
+        color: var(--grey-300);
+        margin-top: 10px;
+      }
     }
 
-    &__textarea {
-      width: 400px;
-      height: 200px;
+    &__form {
+      margin-top: 20px;
+      height: 100%;
+
+      &__textarea {
+        width: 80%;
+        height: 50%;
+      }
     }
   }
 

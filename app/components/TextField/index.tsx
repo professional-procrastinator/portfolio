@@ -21,7 +21,11 @@ export default function TextField({
 }) {
   const [isFocused, setIsFocused] = useState(false);
   return (
-    <label className={styles.container}>
+    <label
+      className={cx(className, {
+        [styles.container]: true,
+      })}
+    >
       <span
         className={cx({
           [styles.label]: true,
@@ -47,7 +51,7 @@ export default function TextField({
             }
             setValue ? setValue(e.target.value) : null;
           }}
-          className={cx(className, {
+          className={cx({
             [styles.textfield]: true,
             [styles['textfield--focused']]: isFocused,
           })}
@@ -68,7 +72,7 @@ export default function TextField({
         />
       ) : (
         <input
-          className={cx(className, {
+          className={cx({
             [styles.textfield]: true,
             [styles['textfield--focused']]: isFocused,
           })}
