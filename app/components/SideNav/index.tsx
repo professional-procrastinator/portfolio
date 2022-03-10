@@ -124,6 +124,7 @@ const SideNavLinks = ({ open }: { open: boolean }) => {
       icon: 'mdi-light:pencil',
     },
   ];
+
   return (
     <div className={styles.sideNav__body__links}>
       {links.map((link) => {
