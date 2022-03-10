@@ -28,7 +28,7 @@
 
       &__description {
         font-size: 17px;
-        width: 80%;
+        width: 90%;
         font-weight: 500;
         line-height: 140%;
         color: var(--grey-300);
@@ -41,18 +41,17 @@
       height: 100%;
 
       &__textarea {
-        width: 80%;
+        width: 87%;
         height: 50%;
       }
     }
   }
 
   &__loading {
+    padding: 40px;
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;
-
-    width: 90%;
   }
 }

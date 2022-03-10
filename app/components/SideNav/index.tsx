@@ -8,6 +8,8 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
 import { useSettings } from '../../hooks/context/settings';
+import TextButton from '../Button/Text';
+import { signOut, useSession } from 'next-auth/react';
 const cx = classNames.bind(styles);
 
 export default function SideNav() {
@@ -55,6 +57,7 @@ export default function SideNav() {
             </div>
 
             <SideNavLinks />
+            <SideNavFooter />
           </div>
         </div>
       </>
@@ -94,6 +97,7 @@ export default function SideNav() {
           </div>
 
           <SideNavLinks />
+          <SideNavFooter />
         </div>
       </div>
     </>
@@ -170,6 +174,33 @@ const SideNavLinks = () => {
           </div>
         </div>
       </Link>
+    </div>
+  );
+};
+
+const SideNavFooter = () => {
+  const { status, data } = useSession();
+  const router = useRouter();
+  return (
+    <div className={styles.sideNav__body__footer}>
+      {status !== 'loading' &&
+      data?.user &&
+      router.pathname === '/guestbook' ? (
+        <div className={styles.sideNav__body__footer__gb}>
+          <div className={styles.sideNav__body__footer__gb__text}>
+            THE GUESTBOOK
+          </div>
+          <TextButton
+            danger
+            onClick={() => {
+              signOut();
+            }}
+            className={styles.sideNav__body__footer__gb__button}
+          >
+            Sign out
+          </TextButton>
+        </div>
+      ) : null}
     </div>
   );
 };
