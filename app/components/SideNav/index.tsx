@@ -56,7 +56,7 @@ export default function SideNav() {
               <Logo />
             </div>
 
-            <SideNavLinks />
+            <SideNavLinks open={sideNavOpen} />
             <SideNavFooter />
           </div>
         </div>
@@ -96,7 +96,7 @@ export default function SideNav() {
             <Logo />
           </div>
 
-          <SideNavLinks />
+          <SideNavLinks open={sideNavOpen} />
           <SideNavFooter />
         </div>
       </div>
@@ -104,76 +104,50 @@ export default function SideNav() {
   );
 }
 
-const SideNavLinks = () => {
+const SideNavLinks = ({ open }: { open: boolean }) => {
   const router = useRouter();
+
+  const links = [
+    {
+      name: 'Home',
+      href: '/',
+      icon: 'mdi-light:home',
+    },
+    {
+      name: 'My Projects',
+      href: '/projects',
+      icon: 'mdi-light:star',
+    },
+    {
+      name: 'The Guestbook',
+      href: '/guestbook',
+      icon: 'mdi-light:pencil',
+    },
+  ];
   return (
     <div className={styles.sideNav__body__links}>
-      <Link href="/" passHref>
-        <div
-          className={cx({
-            [styles.sideNav__body__links__link]: true,
-            [styles['sideNav__body__links__link--active']]:
-              router.pathname === '/',
-          })}
-        >
-          <div className={styles.sideNav__body__links__link__icon}>
-            <Icon
-              color="#9e9e9e"
-              width={32}
-              height={32}
-              icon="mdi-light:home"
-            />
-          </div>
+      {links.map((link) => {
+        return (
+          <Link href={link.href} passHref>
+            <div
+              className={cx({
+                [styles.sideNav__body__links__link]: true,
+                [styles['sideNav__body__links__link--anim']]: open,
+                [styles['sideNav__body__links__link--active']]:
+                  router.pathname === link.href,
+              })}
+            >
+              <div className={styles.sideNav__body__links__link__icon}>
+                <Icon color="#9e9e9e" width={32} height={32} icon={link.icon} />
+              </div>
 
-          <div className={styles.sideNav__body__links__link__label}>Home</div>
-        </div>
-      </Link>
-
-      <Link href="/projects" passHref>
-        <div
-          className={cx({
-            [styles.sideNav__body__links__link]: true,
-            [styles['sideNav__body__links__link--active']]:
-              router.pathname === '/projects',
-          })}
-        >
-          <div className={styles.sideNav__body__links__link__icon}>
-            <Icon
-              color="#9e9e9e"
-              width={32}
-              height={32}
-              icon="mdi-light:star"
-            />
-          </div>
-
-          <div className={styles.sideNav__body__links__link__label}>
-            My Projects
-          </div>
-        </div>
-      </Link>
-
-      <Link href="/guestbook" passHref>
-        <div
-          className={cx({
-            [styles.sideNav__body__links__link]: true,
-            [styles['sideNav__body__links__link--active']]:
-              router.pathname === '/guestbook',
-          })}
-        >
-          <div className={styles.sideNav__body__links__link__icon}>
-            <Icon
-              color="#9e9e9e"
-              width={32}
-              height={32}
-              icon="mdi-light:pencil"
-            />
-          </div>
-
-          <div className={styles.sideNav__body__links__link__label}>
-            The Guestbook
-          </div>
-        </div>
-      </Link>
+              <div className={styles.sideNav__body__links__link__label}>
+                {link.name}
+              </div>
+            </div>
+          </Link>
+        );
+      })}
     </div>
   );
 };

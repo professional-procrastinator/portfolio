@@ -60,7 +60,6 @@
         border-radius: 6px;
         cursor: pointer;
         transition: all 0.2s;
-        animation: link 0.2s forwards;
 
         &:hover {
           background-color: rgba(109, 97, 97, 0.1);
@@ -78,6 +77,10 @@
           transition: all 0.2s;
           margin: auto auto auto 0;
         }
+      }
+
+      &__link--anim {
+        animation: link 0.2s forwards;
       }
 
       &__link--active {
