@@ -1,7 +1,6 @@
 import styles from './index.module.scss';
 import classNames from 'classnames/bind';
 import Logo from '../../public/icon.svg';
-import Hamburger from '../../public/icons/hamburger.svg';
 import { useRef, useState, useContext } from 'react';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 import { useRouter } from 'next/router';
@@ -26,10 +25,14 @@ export default function SideNav() {
   if (theme === 'dark') {
     return (
       <>
-        <Hamburger
+        <Icon
+          icon="bx:menu"
+          color="#fff"
           onClick={() => {
             setSideNavOpen(true);
           }}
+          width="40px"
+          height="40px"
           className={styles.hamburger}
         />
         <div
@@ -66,11 +69,12 @@ export default function SideNav() {
 
   return (
     <>
-      <Hamburger
+      <Icon
+        icon="bx:menu"
+        color="#fff"
         onClick={() => {
           setSideNavOpen(true);
         }}
-        className={styles.hamburger}
       />
       <div
         className={cx({

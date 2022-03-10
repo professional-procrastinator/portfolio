@@ -37,17 +37,27 @@
     flex-direction: column;
     margin-top: 120px;
     align-items: center;
-    gap: 60px;
+    gap: 100px;
     width: 100%;
     padding: 20px;
     height: 100%;
+    transition: all 0.2s;
+
+    @media screen and (max-height: 660px) {
+      margin-top: 20px;
+      align-items: flex-start;
+      gap: 0px;
+    }
 
     &__logo {
       cursor: pointer;
+
+      @media screen and (max-height: 660px) {
+        display: none;
+      }
     }
 
     &__links {
-      margin-top: 40px;
       display: flex;
       flex-flow: column;
       width: 100%;
@@ -108,10 +118,11 @@
           font-weight: 600;
           font-size: 14px;
           margin: auto auto auto 0;
+          letter-spacing: 0.5px;
         }
 
         &__button {
-          font-size: 14px;
+          font-size: 12.5px;
         }
       }
     }
