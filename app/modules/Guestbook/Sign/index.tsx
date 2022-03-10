@@ -7,6 +7,7 @@ import styles from '../../../styles/shared/popup.module.scss';
 import SignStyles from './index.module.scss';
 import Loader from '../../../components/Loader';
 import Primary from '../../../components/Button/Primary';
+import Checkbox from '../../../components/Checkbox';
 
 export default function Sign() {
   const { data, status } = useSession();
@@ -14,11 +15,9 @@ export default function Sign() {
   return (
     <div className={styles.popup}>
       <div className={styles.popup__banner}>
-        <Image
+        <img
           className={styles.popup__banner__image}
           src={'https://picsum.photos/160/550?random=1'}
-          quality={100}
-          layout={'fill'}
         />
       </div>
 
@@ -49,6 +48,9 @@ const SignForm = () => {
           limit={250}
           className={styles.popup__content__form__textarea}
         />
+        <Primary className={styles.popup__content__form__primary}>
+          Sign the guestbook
+        </Primary>
       </div>
     </div>
   );

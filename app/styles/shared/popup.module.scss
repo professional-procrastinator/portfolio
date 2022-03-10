@@ -39,10 +39,18 @@
     &__form {
       margin-top: 20px;
       height: 100%;
+      position: relative;
+      display: flex;
+      flex-flow: column;
+      gap: 30px;
 
       &__textarea {
         width: 87%;
         height: 50%;
+      }
+
+      &__primary {
+        width: 87%;
       }
     }
   }
