@@ -14,7 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       success: true,
       message: 'Guestbook entries',
       response: {
-        data: entries,
+        data: entries.reverse(),
         timestamp: Date.now(),
       },
     };
