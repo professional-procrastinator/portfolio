@@ -3,6 +3,9 @@
   height: 50px;
   font-weight: 500;
   font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--primary);
   color: white;
   border: none;
@@ -17,5 +20,14 @@
 
   &:active {
     transform: var(--primary-button-scale-size-active);
+  }
+}
+
+.button--loading {
+  cursor: default;
+  background-color: #414040;
+
+  &:hover {
+    background-color: #414040;
   }
 }

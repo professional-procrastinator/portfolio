@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import TextField from '../../../components/TextField';
 import TypeWriter from '../../../components/TypeWriter';
@@ -8,8 +8,10 @@ import SignStyles from './index.module.scss';
 import Loader from '../../../components/Loader';
 import Primary from '../../../components/Button/Primary';
 import Checkbox from '../../../components/Checkbox';
+import axios from 'axios';
+import { useMain } from '../../../hooks/context/main';
 
-export default function Sign() {
+export default function Sign({ close }: { close: () => void }) {
   const { data, status } = useSession();
 
   return (
@@ -25,33 +27,76 @@ export default function Sign() {
         {status === 'loading' ? (
           <SignLoading />
         ) : (
-          <>{data?.user ? <SignForm /> : <SignLogin />}</>
+          <>{data?.user ? <SignForm close={close} /> : <SignLogin />}</>
         )}
       </>
     </div>
   );
 }
 
-const SignForm = () => {
+const SignForm = ({ close }: { close: () => void }) => {
   const [message, setMessage] = useState('');
+  const [signing, setSigning] = useState(false);
+  const [error, setError] = useState('');
+  const { setGbReload } = useMain() as any;
+
+  useEffect(() => {
+    setSigning(false);
+    setError('');
+  }, [close]);
+
+  const sign = async (event?: React.FormEvent<HTMLFormElement>) => {
+    if (event) {
+      event.preventDefault();
+    }
+
+    setSigning(true);
+    const { data } = await axios.post('/api/guestbook/', {
+      content: message,
+    });
+
+    if (!data.success) {
+      setError(data.message);
+      return setSigning(false);
+    }
+
+    setGbReload(true);
+    setSigning(false);
+    setMessage('');
+    close();
+  };
 
   return (
     <div className={styles.popup__content}>
       <SignHeader />
 
-      <div className={styles.popup__content__form}>
+      <form
+        className={styles.popup__content__form}
+        onSubmit={(e) => {
+          sign(e);
+        }}
+      >
         <TextField
           textarea
           label={'Your Message'}
           value={message}
           setValue={setMessage}
-          limit={250}
+          limit={150}
           className={styles.popup__content__form__textarea}
+          disabled={signing}
+          onChange={(e) => {
+            setError('');
+          }}
         />
-        <Primary className={styles.popup__content__form__primary}>
+        <Primary
+          className={styles.popup__content__form__primary}
+          loading={signing}
+        >
           Sign the guestbook
         </Primary>
-      </div>
+
+        <div className={styles.popup__content__form__error}>{error}</div>
+      </form>
     </div>
   );
 };

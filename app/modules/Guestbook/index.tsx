@@ -9,6 +9,7 @@ import Primary from '../../components/Button/Primary';
 import { useState } from 'react';
 import Popup from '../../components/Popup';
 import Sign from './Sign';
+import GuestbookEntries from './Entries';
 import TextButton from '../../components/Button/Text';
 
 export default function Guestbook() {
@@ -64,6 +65,8 @@ export default function Guestbook() {
                     )}
                   </div>
                 </div>
+
+                <GuestbookEntries />
               </div>
             </div>
           </div>
@@ -74,7 +77,11 @@ export default function Guestbook() {
             }}
             state={isSignPopupOpen}
           >
-            <Sign />
+            <Sign
+              close={() => {
+                setSignPopupOpen(false);
+              }}
+            />
           </Popup>
         </>
       )}

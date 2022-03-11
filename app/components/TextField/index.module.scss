@@ -36,6 +36,12 @@
   height: 100%;
 }
 
+.textfield:disabled {
+  background-color: var(--transparent);
+  opacity: 0.4;
+  color: var(--primary-light);
+  font-weight: 400;
+}
 .textfield--focused {
   border: 2px solid var(--primary-light);
 }

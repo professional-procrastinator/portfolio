@@ -1,6 +1,6 @@
 import styles from './index.module.scss';
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { Ref, useState } from 'react';
 const cx = classNames.bind(styles);
 export default function TextField({
   className,
@@ -10,6 +10,9 @@ export default function TextField({
   type,
   textarea,
   limit,
+  passRef,
+  disabled,
+  onChange,
 }: {
   className?: string;
   label?: string;
@@ -18,6 +21,9 @@ export default function TextField({
   type?: string;
   textarea?: boolean;
   limit?: number;
+  passRef?: any;
+  disabled?: boolean;
+  onChange?: (e: any) => void;
 }) {
   const [isFocused, setIsFocused] = useState(false);
   return (
@@ -44,8 +50,11 @@ export default function TextField({
       </span>
       {textarea ? (
         <textarea
+          ref={passRef}
           value={value}
+          disabled={disabled}
           onChange={(e) => {
+            onChange ? onChange(e) : null;
             if (e.target.value.length > limit!) {
               return;
             }
@@ -72,13 +81,16 @@ export default function TextField({
         />
       ) : (
         <input
+          ref={passRef}
           className={cx({
             [styles.textfield]: true,
             [styles['textfield--focused']]: isFocused,
           })}
           type={type}
           value={value}
+          disabled={disabled}
           onChange={(e) => {
+            onChange ? onChange(e) : null;
             setValue ? setValue(e.target.value) : null;
           }}
           onFocus={(e) => {
