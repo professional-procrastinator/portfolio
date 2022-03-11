@@ -1,29 +1,27 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useMain } from '../../../hooks/context/main';
+import Loader from '../../../components/Loader';
+import styles from './index.module.scss';
 
-const GuestbookEntries = () => {
-  const [entries, setEntries] = useState<any>([]);
-  const { gbReload } = useMain() as any;
-
-  const fetchEntries = async () => {
-    const { data } = await axios.get('/api/guestbook/');
-
-    if (!data.success) {
-    }
-
-    setEntries(data.response.data);
-  };
-
-  useEffect(() => {
-    fetchEntries();
-  }, [gbReload]);
-
+const GuestbookEntries = ({
+  entries,
+  loading,
+}: {
+  entries: any[];
+  loading: boolean;
+}) => {
   return (
-    <div>
-      {entries.map((entry: any) => (
-        <div>{entry.content}</div>
-      ))}
+    <div className={styles.main}>
+      {loading && (
+        <Loader
+          containerStyles={{
+            margin: '90px auto auto auto',
+          }}
+        />
+      )}
+
+      {!loading &&
+        entries.map((entry: any) => <div key={entry._id}>{entry.content}</div>)}
     </div>
   );
 };

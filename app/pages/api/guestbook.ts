@@ -24,7 +24,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (req.method === 'POST') {
     const session = await getSession({ req });
-    console.log(session);
 
     if (!session) {
       const response: Response = {

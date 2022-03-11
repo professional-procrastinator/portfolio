@@ -9,9 +9,13 @@ import Loader from '../../../components/Loader';
 import Primary from '../../../components/Button/Primary';
 import Checkbox from '../../../components/Checkbox';
 import axios from 'axios';
-import { useMain } from '../../../hooks/context/main';
-
-export default function Sign({ close }: { close: () => void }) {
+export default function Sign({
+  close,
+  setGbReload,
+}: {
+  close: () => void;
+  setGbReload: (value: boolean) => void;
+}) {
   const { data, status } = useSession();
 
   return (
@@ -27,18 +31,29 @@ export default function Sign({ close }: { close: () => void }) {
         {status === 'loading' ? (
           <SignLoading />
         ) : (
-          <>{data?.user ? <SignForm close={close} /> : <SignLogin />}</>
+          <>
+            {data?.user ? (
+              <SignForm setGbReload={setGbReload} close={close} />
+            ) : (
+              <SignLogin />
+            )}
+          </>
         )}
       </>
     </div>
   );
 }
 
-const SignForm = ({ close }: { close: () => void }) => {
+const SignForm = ({
+  close,
+  setGbReload,
+}: {
+  close: () => void;
+  setGbReload: (value: boolean) => void;
+}) => {
   const [message, setMessage] = useState('');
   const [signing, setSigning] = useState(false);
   const [error, setError] = useState('');
-  const { setGbReload } = useMain() as any;
 
   useEffect(() => {
     setSigning(false);

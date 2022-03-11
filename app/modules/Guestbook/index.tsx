@@ -6,17 +6,44 @@ import PageStyles from '../../styles/shared/page.module.scss';
 
 import Loader from '../../components/Loader';
 import Primary from '../../components/Button/Primary';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Popup from '../../components/Popup';
 import Sign from './Sign';
 import GuestbookEntries from './Entries';
 import TextButton from '../../components/Button/Text';
+import axios from 'axios';
 
 export default function Guestbook() {
   const { data, status } = useSession();
   const isSmallMobile = useMediaQuery({ maxWidth: '528px' });
-
+  const [gbReload, setGbReload] = useState(false);
+  const [entriesLoading, setEntriesLoading] = useState(true);
+  const [entries, setEntries] = useState<any>([]);
   const [isSignPopupOpen, setSignPopupOpen] = useState(false);
+
+  const fetchEntries = async () => {
+    const { data } = await axios.get('/api/guestbook/');
+
+    if (!data.success) {
+    }
+
+    setEntries(data.response.data);
+
+    setEntriesLoading(false);
+  };
+
+  useEffect(() => {
+    if (gbReload) {
+      setEntriesLoading(true);
+      fetchEntries();
+    }
+  }, [gbReload]);
+
+  useEffect(() => {
+    fetchEntries();
+    setEntriesLoading(false);
+  }, []);
+
   return (
     <>
       {status === 'loading' ? null : (
@@ -66,7 +93,7 @@ export default function Guestbook() {
                   </div>
                 </div>
 
-                <GuestbookEntries />
+                <GuestbookEntries loading={entriesLoading} entries={entries} />
               </div>
             </div>
           </div>
@@ -81,6 +108,7 @@ export default function Guestbook() {
               close={() => {
                 setSignPopupOpen(false);
               }}
+              setGbReload={setGbReload}
             />
           </Popup>
         </>
