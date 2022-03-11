@@ -1,11 +1,14 @@
 .popup {
   display: flex;
   width: 100%;
+
+  transition: all 0.2s;
   height: 100%;
 
   &__banner {
     height: 100%;
     border-radius: 10px 0px 0px 10px;
+    transition: all 0.2s;
 
     &__image {
       border-radius: 10px 0px 0px 10px;
@@ -16,6 +19,8 @@
     padding: 40px;
     display: flex;
     flex-flow: column;
+
+    transition: all 0.2s;
 
     &__header {
       &__heading {

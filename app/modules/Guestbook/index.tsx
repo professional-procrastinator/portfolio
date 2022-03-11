@@ -28,7 +28,6 @@ export default function Guestbook() {
     }
 
     setEntries(data.response.data);
-
     setEntriesLoading(false);
   };
 
@@ -36,12 +35,13 @@ export default function Guestbook() {
     if (gbReload) {
       setEntriesLoading(true);
       fetchEntries();
+      setGbReload(false);
+      setEntriesLoading(false);
     }
   }, [gbReload]);
 
   useEffect(() => {
     fetchEntries();
-    setEntriesLoading(false);
   }, []);
 
   return (
