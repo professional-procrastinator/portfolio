@@ -1,0 +1,22 @@
+.main {
+  padding: 25px;
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+  border-radius: 6px;
+  background-color: var(--entry-bg);
+
+  &__header {
+    display: flex;
+
+    &__name {
+      color: white;
+      font-weight: 500;
+      font-size: 17px;
+    }
+  }
+
+  &__content {
+    color: var(--grey-300);
+  }
+}

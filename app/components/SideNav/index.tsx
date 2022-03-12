@@ -25,16 +25,17 @@ export default function SideNav() {
   if (theme === 'dark') {
     return (
       <>
-        <Icon
-          icon="bx:menu"
-          color="#fff"
-          onClick={() => {
-            setSideNavOpen(true);
-          }}
-          width="40px"
-          height="40px"
-          className={styles.hamburger}
-        />
+        <div className={styles.hamburger}>
+          <Icon
+            icon="bx:menu"
+            color="#fff"
+            onClick={() => {
+              setSideNavOpen(true);
+            }}
+            width="40px"
+            height="40px"
+          />
+        </div>
         <div
           className={cx({
             [styles.overlay]: true,
@@ -69,13 +70,15 @@ export default function SideNav() {
 
   return (
     <>
-      <Icon
-        icon="bx:menu"
-        color="#fff"
-        onClick={() => {
-          setSideNavOpen(true);
-        }}
-      />
+      <div className={styles.hamburger}>
+        <Icon
+          icon="bx:menu"
+          color="#fff"
+          onClick={() => {
+            setSideNavOpen(true);
+          }}
+        />
+      </div>
       <div
         className={cx({
           [styles.overlay]: true,

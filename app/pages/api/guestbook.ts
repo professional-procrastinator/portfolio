@@ -38,6 +38,24 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(200).json(response);
     }
 
+    //nested object - email exist inside author object
+    const doesCommentExist = await Comment.findOne({
+      'author.email': session.user.email,
+    });
+
+    if (doesCommentExist) {
+      const response: Response = {
+        success: false,
+        message: 'You have already signed the guestbook.',
+        error: {
+          code: 403,
+          details: 'Forbidden',
+        },
+      };
+
+      return res.status(200).json(response);
+    }
+
     const { content } = req.body;
 
     if (

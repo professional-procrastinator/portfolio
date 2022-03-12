@@ -2,4 +2,11 @@
   display: flex;
   flex-flow: column;
   height: auto;
+
+  &__entries {
+    margin-top: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 2fr));
+  }
 }

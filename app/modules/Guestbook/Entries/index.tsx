@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Loader from '../../../components/Loader';
+import Entry from './Entry';
 import styles from './index.module.scss';
 
 const GuestbookEntries = ({
@@ -20,8 +21,13 @@ const GuestbookEntries = ({
         />
       )}
 
-      {!loading &&
-        entries.map((entry: any) => <div key={entry._id}>{entry.content}</div>)}
+      {!loading && (
+        <div className={styles.main__entries}>
+          {entries.map((entry: any) => (
+            <Entry key={entry._id} entry={entry} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

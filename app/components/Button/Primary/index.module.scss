@@ -30,4 +30,8 @@
   &:hover {
     background-color: #414040;
   }
+
+  &:active {
+    transform: scale(1);
+  }
 }

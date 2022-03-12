@@ -134,8 +134,9 @@
 }
 
 .hamburger {
-  margin: 37px;
   cursor: pointer;
+  z-index: 30;
+  margin: 37px;
 }
 
 @keyframes link {
