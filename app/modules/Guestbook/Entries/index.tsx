@@ -16,7 +16,7 @@ const GuestbookEntries = ({
       {loading && (
         <Loader
           containerStyles={{
-            margin: '90px auto auto auto',
+            margin: '20% auto auto auto',
           }}
         />
       )}

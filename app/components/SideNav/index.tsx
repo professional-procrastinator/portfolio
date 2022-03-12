@@ -25,7 +25,7 @@ export default function SideNav() {
   if (theme === 'dark') {
     return (
       <>
-        <div className={styles.hamburger}>
+        <div>
           <Icon
             icon="bx:menu"
             color="#fff"
@@ -34,6 +34,10 @@ export default function SideNav() {
             }}
             width="40px"
             height="40px"
+            style={{
+              cursor: 'pointer',
+              margin: '37px',
+            }}
           />
         </div>
         <div
@@ -70,12 +74,16 @@ export default function SideNav() {
 
   return (
     <>
-      <div className={styles.hamburger}>
+      <div>
         <Icon
           icon="bx:menu"
           color="#fff"
           onClick={() => {
             setSideNavOpen(true);
+          }}
+          style={{
+            cursor: 'pointer',
+            padding: '37px',
           }}
         />
       </div>
