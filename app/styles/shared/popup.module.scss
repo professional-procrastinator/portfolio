@@ -67,6 +67,10 @@
 
       &__primary {
         min-width: 100%;
+
+        @media screen and (max-width: 636px) {
+          min-height: 26%;
+        }
       }
 
       &__error {
