@@ -144,7 +144,7 @@ const SideNavLinks = ({ open }: { open: boolean }) => {
     <div className={styles.sideNav__body__links}>
       {links.map((link) => {
         return (
-          <Link href={link.href} passHref>
+          <Link href={link.href} passHref key={link.name}>
             <div
               className={cx({
                 [styles.sideNav__body__links__link]: true,

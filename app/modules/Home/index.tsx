@@ -16,6 +16,10 @@ export default function Home() {
             Hey there! I'm Nishit Jha, a 13 year old developer and designer. I
             love to build web apps, and work with the MERN stack.{' '}
           </div>
+
+          <div className={PageStyles.main__content__body}>
+            <div className={PageStyles.main__content__body__header}></div>
+          </div>
         </div>
       </div>
     </>
