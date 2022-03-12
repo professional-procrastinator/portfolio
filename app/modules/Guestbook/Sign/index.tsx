@@ -110,7 +110,9 @@ const SignForm = ({
           Sign the guestbook
         </Primary>
 
-        <div className={styles.popup__content__form__error}>{error}</div>
+        <div className={styles.popup__content__form__error}>
+          {error ? error : ' '}
+        </div>
       </form>
     </div>
   );
