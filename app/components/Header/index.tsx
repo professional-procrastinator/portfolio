@@ -37,12 +37,12 @@ const HeaderLinks = () => {
   const { data, status } = useSession();
   const links = [
     {
-      target: 'projects',
+      target: '/projects',
       label: 'My Projects',
       active: router.pathname === '/projects',
     },
     {
-      target: 'guestbook',
+      target: '/guestbook',
       label: 'The Guestbook',
       active: router.pathname === '/guestbook',
     },

@@ -6,8 +6,10 @@ const SkillSchema = new mongoose.Schema({
     required: true,
   },
   icon: {
-    type: String,
-    required: true,
+    type: {
+      name: String,
+      color: String,
+    },
   },
 });
 
