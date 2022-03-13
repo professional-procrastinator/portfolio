@@ -7,21 +7,26 @@ export default function TextButton({
   className,
   onClick,
   danger,
+  loading,
 }: {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
   danger?: boolean;
+  loading?: boolean;
 }) {
   return (
-    <div
+    <button
       className={cx(className, {
         button: true,
         'button--danger': danger,
+        [ButtonStyles['button--loading']]: loading && !danger,
+        [ButtonStyles['button--danger-loading']]: loading && danger,
       })}
-      onClick={onClick}
+      onClick={loading ? undefined : onClick}
+      disabled={loading}
     >
       {children}
-    </div>
+    </button>
   );
 }

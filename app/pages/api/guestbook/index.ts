@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { connectDB } from '../../utils/connect';
-import Response from '../../utils/types/response';
+import { connectDB } from '../../../utils/connect';
+import Response from '../../../utils/types/response';
 import { getSession } from 'next-auth/react';
 
-import Comment from '../../models/comment';
+import Comment from '../../../models/comment';
 
 connectDB();
 

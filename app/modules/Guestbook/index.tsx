@@ -93,7 +93,11 @@ export default function Guestbook() {
                   </div>
                 </div>
 
-                <GuestbookEntries loading={entriesLoading} entries={entries} />
+                <GuestbookEntries
+                  loading={entriesLoading}
+                  entries={entries}
+                  setEntries={setEntries}
+                />
               </div>
             </div>
           </div>

@@ -7,9 +7,11 @@ import styles from './index.module.scss';
 const GuestbookEntries = ({
   entries,
   loading,
+  setEntries,
 }: {
   entries: any[];
   loading: boolean;
+  setEntries: (entries: any[]) => void;
 }) => {
   return (
     <div className={styles.main}>
@@ -24,7 +26,12 @@ const GuestbookEntries = ({
       {!loading && (
         <div className={styles.main__entries}>
           {entries.map((entry: any) => (
-            <Entry key={entry._id} entry={entry} />
+            <Entry
+              key={entry._id}
+              setEntries={setEntries}
+              entry={entry}
+              entries={entries}
+            />
           ))}
         </div>
       )}

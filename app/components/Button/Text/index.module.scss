@@ -6,6 +6,8 @@
   color: white;
   transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
   cursor: pointer;
+  border: none;
+  background-color: transparent;
 
   &:hover {
     background-color: var(--primary-dark);
@@ -17,5 +19,14 @@
 
   &:hover {
     background-color: var(--danger-button-bg);
+  }
+}
+
+.button--danger-loading {
+  color: var(--danger-disabled) !important;
+  cursor: default;
+
+  &:hover {
+    color: var(--danger-disabled) !important;
   }
 }
