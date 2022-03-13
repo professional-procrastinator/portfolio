@@ -1,0 +1,17 @@
+.main {
+  &__skills {
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+
+    &__skill {
+      display: flex;
+      flex-flow: column;
+      gap: 10px;
+
+      &__name {
+        color: var(--grey-300);
+      }
+    }
+  }
+}

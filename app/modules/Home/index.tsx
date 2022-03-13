@@ -1,24 +1,13 @@
 import PageStyles from '../../styles/shared/page.module.scss';
 
 import TypeWriter from '../../components/TypeWriter';
-import Skills from './Skills';
-import { MainSkills } from './helper';
+
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import Skill from '../../utils/types/skill';
+import SkillsSection from './Skills';
 
 export default function Home() {
   const words = ['a developer', 'a designer', 'a math enthusiast.'];
-  const [skills, setSkills] = useState<[Skill]>(MainSkills as any);
-
-  useEffect(() => {
-    const fetchSkills = async () => {
-      const { data } = await axios.get('/api/skills');
-      setSkills(data.response.data);
-    };
-
-    fetchSkills();
-  }, []);
 
   return (
     <>
@@ -33,7 +22,7 @@ export default function Home() {
             love to build web apps, and work with the MERN stack.{' '}
           </div>
 
-          <Skills skills={skills} />
+          <SkillsSection />
         </div>
       </div>
     </>
