@@ -31,21 +31,18 @@ const Entry = ({
     <div className={styles.main}>
       <div className={styles.main__header}>
         <div className={styles.main__header__name}>{entry.author.name}</div>
-      </div>
-      <div className={styles.main__content}>{entry.content}</div>
-
-      {data && data.user && data.user.email === entry.author.email && (
-        <div className={styles.main__footer}>
+        {data && data.user && data.user.email === entry.author.email && (
           <TextButton
             onClick={deleteEntry}
             loading={isDeleting}
             danger
-            className={styles.main__footer__button}
+            className={styles.main__header__button}
           >
             {isDeleting ? 'Deleting...' : 'Delete'}
           </TextButton>
-        </div>
-      )}
+        )}
+      </div>
+      <div className={styles.main__content}>{entry.content}</div>
     </div>
   );
 };

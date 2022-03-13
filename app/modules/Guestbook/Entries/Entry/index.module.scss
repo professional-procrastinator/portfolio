@@ -14,17 +14,9 @@
       font-weight: 600;
       font-size: 17px;
     }
-  }
-
-  &__content {
-    color: var(--grey-300);
-    width: 90%;
-  }
-
-  &__footer {
-    margin-top: auto;
 
     &__button {
+      margin: auto 0 auto auto;
       padding: 0px !important;
       font-size: 14px !important;
       font-weight: 400 !important;
@@ -34,5 +26,10 @@
         color: var(--danger-light);
       }
     }
+  }
+
+  &__content {
+    color: var(--grey-300);
+    width: 90%;
   }
 }
