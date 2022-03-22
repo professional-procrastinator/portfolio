@@ -10,7 +10,7 @@ const SkillsSection = () => {
     <div className={PageStyles.main__content__body}>
       <div className={PageStyles.main__content__body__header}>
         <div className={PageStyles.main__content__body__header__heading}>
-          My Skills
+          Skills
         </div>
       </div>
       <div className={styles.main}>
