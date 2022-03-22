@@ -1,17 +1,9 @@
 .main {
+  margin-top: 15px;
+
   &__skills {
-    display: flex;
-    flex-flow: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 0fr));
     gap: 10px;
-
-    &__skill {
-      display: flex;
-      flex-flow: column;
-      gap: 10px;
-
-      &__name {
-        color: var(--grey-300);
-      }
-    }
   }
 }

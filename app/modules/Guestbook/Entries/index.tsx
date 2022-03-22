@@ -1,8 +1,9 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import Loader from '../../../components/Loader';
-import Entry from './Entry';
-import styles from './index.module.scss';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Loader from "../../../components/Loader";
+import Entry from "./Entry";
+import styles from "./index.module.scss";
+import SkeletonEntry from "./SkeletonEntry";
 
 const GuestbookEntries = ({
   entries,
@@ -16,11 +17,15 @@ const GuestbookEntries = ({
   return (
     <div className={styles.main}>
       {loading && (
-        <Loader
-          containerStyles={{
-            margin: '20% auto auto auto',
-          }}
-        />
+        <div className={styles.main__entries}>
+          <SkeletonEntry />
+
+          <SkeletonEntry />
+
+          <SkeletonEntry />
+
+          <SkeletonEntry />
+        </div>
       )}
 
       {!loading && (

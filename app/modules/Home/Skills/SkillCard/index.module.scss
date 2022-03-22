@@ -1,0 +1,25 @@
+.skill {
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+  width: 230px;
+  min-height: 100px;
+  background-color: var(--skill-bg);
+  border-radius: 4px;
+  padding: 18px;
+
+  &__header {
+    color: var(--grey-300);
+    font-weight: 500;
+  }
+
+  &__footer {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+
+    &__icon {
+      margin: auto 0 auto auto;
+    }
+  }
+}
