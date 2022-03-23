@@ -1,7 +1,8 @@
-import Head from 'next/head';
-import { useSettings } from '../../hooks/context/settings';
-import Header from '../Header';
-import styles from './index.module.scss';
+import Head from "next/head";
+import { useSettings } from "../../hooks/context/settings";
+import Footer from "../Footer";
+import Header from "../Header";
+import styles from "./index.module.scss";
 
 const Layout = ({ title, description, children, imageURL }: LayoutProps) => {
   const { settings } = useSettings() as any;
@@ -9,23 +10,23 @@ const Layout = ({ title, description, children, imageURL }: LayoutProps) => {
   return (
     <>
       <Head>
-        <title>{title ? title : 'Nishit Jha'}</title>
+        <title>{title ? title : "Nishit Jha"}</title>
         <meta
           name="description"
-          content={description ? description : 'My Portfolio'}
+          content={description ? description : "My Portfolio"}
         />
         <meta
           property="og:image"
           content={
             imageURL
               ? imageURL
-              : 'https://media.discordapp.net/attachments/945275718793834526/948948146942259260/unknown.png'
+              : "https://media.discordapp.net/attachments/945275718793834526/948948146942259260/unknown.png"
           }
         />
-        <meta property="og:title" content={title ? title : 'Nishit Jha'} />
+        <meta property="og:title" content={title ? title : "Nishit Jha"} />
         <meta
           property="og:description"
-          content={description ? description : 'My portfolio'}
+          content={description ? description : "My portfolio"}
         />
 
         <meta
@@ -33,7 +34,7 @@ const Layout = ({ title, description, children, imageURL }: LayoutProps) => {
           content={
             imageURL
               ? imageURL
-              : 'https://media.discordapp.net/attachments/945275718793834526/948948146942259260/unknown.png'
+              : "https://media.discordapp.net/attachments/945275718793834526/948948146942259260/unknown.png"
           }
         />
       </Head>
@@ -41,15 +42,16 @@ const Layout = ({ title, description, children, imageURL }: LayoutProps) => {
       <div
         className={styles.main}
         style={
-          theme === 'dark'
-            ? { backgroundColor: 'var(--background-dark)' }
+          theme === "dark"
+            ? { backgroundColor: "var(--background-dark)" }
             : {
-                backgroundColor: 'var(--background-light)',
+                backgroundColor: "var(--background-light)",
               }
         }
       >
         <Header />
         {children}
+        <Footer />
       </div>
     </>
   );

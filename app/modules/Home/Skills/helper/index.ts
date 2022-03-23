@@ -22,6 +22,48 @@ const Skills: Skill[] = [
       color: "#ffffff",
     },
   },
+  {
+    name: "GraphQL",
+    icon: {
+      name: "logos:graphql",
+      color: "#e10098",
+    },
+  },
+  {
+    name: "Firebase",
+    icon: {
+      name: "simple-icons:firebase",
+      color: "#ffa726",
+    },
+  },
+  {
+    name: "Next.js",
+    icon: {
+      name: "akar-icons:nextjs-fill",
+      color: "#ffffff",
+    },
+  },
+  {
+    name: "Socket.io",
+    icon: {
+      name: "cib:socket-io",
+      color: "#ffffff",
+    },
+  },
+  {
+    name: "Express",
+    icon: {
+      name: "simple-icons:express",
+      color: "#ffffff",
+    },
+  },
+  {
+    name: "TypeScript",
+    icon: {
+      name: "cib:typescript",
+      color: "#ffffff",
+    },
+  },
 ];
 
 export default Skills;
