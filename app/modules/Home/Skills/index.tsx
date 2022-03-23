@@ -16,7 +16,7 @@ const SkillsSection = () => {
       <div className={styles.main}>
         <div className={styles.main__skills}>
           {Skills.map((skill: Skill) => (
-            <SkillCard skill={skill} />
+            <SkillCard skill={skill} key={skill.name} />
           ))}
         </div>
       </div>

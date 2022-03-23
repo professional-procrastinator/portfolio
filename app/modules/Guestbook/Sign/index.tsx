@@ -1,14 +1,14 @@
-import Image from 'next/image';
-import React, { useEffect, useRef, useState } from 'react';
-import { signIn, useSession } from 'next-auth/react';
-import TextField from '../../../components/TextField';
-import TypeWriter from '../../../components/TypeWriter';
-import styles from '../../../styles/shared/popup.module.scss';
-import SignStyles from './index.module.scss';
-import Loader from '../../../components/Loader';
-import Primary from '../../../components/Button/Primary';
-import Checkbox from '../../../components/Checkbox';
-import axios from 'axios';
+import Image from "next/image";
+import React, { useEffect, useRef, useState } from "react";
+import { signIn, useSession } from "next-auth/react";
+import TextField from "../../../components/TextField";
+import TypeWriter from "../../../components/TypeWriter";
+import styles from "../../../styles/shared/popup.module.scss";
+import SignStyles from "./index.module.scss";
+import Loader from "../../../components/Loader";
+import Primary from "../../../components/Button/Primary";
+import Checkbox from "../../../components/Checkbox";
+import axios from "axios";
 export default function Sign({
   close,
   setGbReload,
@@ -23,12 +23,12 @@ export default function Sign({
       <div className={styles.popup__banner}>
         <img
           className={styles.popup__banner__image}
-          src={'https://picsum.photos/160/550?random=1'}
+          src={"https://picsum.photos/160/550?random=1"}
         />
       </div>
 
       <>
-        {status === 'loading' ? (
+        {status === "loading" ? (
           <SignLoading />
         ) : (
           <>
@@ -51,13 +51,13 @@ const SignForm = ({
   close: () => void;
   setGbReload: (value: boolean) => void;
 }) => {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [signing, setSigning] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     setSigning(false);
-    setError('');
+    setError("");
   }, [close]);
 
   const sign = async (event?: React.FormEvent<HTMLFormElement>) => {
@@ -66,7 +66,7 @@ const SignForm = ({
     }
 
     setSigning(true);
-    const { data } = await axios.post('/api/guestbook/', {
+    const { data } = await axios.post("/api/guestbook/", {
       content: message,
     });
 
@@ -77,7 +77,7 @@ const SignForm = ({
 
     setGbReload(true);
     setSigning(false);
-    setMessage('');
+    setMessage("");
     close();
   };
 
@@ -93,14 +93,14 @@ const SignForm = ({
       >
         <TextField
           textarea
-          label={'Your Message'}
+          label={"Your Message"}
           value={message}
           setValue={setMessage}
-          limit={150}
+          limit={100}
           className={styles.popup__content__form__textarea}
           disabled={signing}
           onChange={(e) => {
-            setError('');
+            setError("");
           }}
         />
         <Primary
@@ -111,7 +111,7 @@ const SignForm = ({
         </Primary>
 
         <div className={styles.popup__content__form__error}>
-          {error ? error : ' '}
+          {error ? error : " "}
         </div>
       </form>
     </div>
@@ -132,7 +132,7 @@ const SignLogin = () => {
           </div>
 
           <div className={SignStyles.login__form}>
-            <Primary onClick={() => signIn('github')}>
+            <Primary onClick={() => signIn("github")}>
               Sign in with GitHub
             </Primary>
           </div>
@@ -147,11 +147,11 @@ const SignLoading = () => {
     <div className={styles.popup__loading}>
       <Loader
         containerStyles={{
-          margin: 'auto',
+          margin: "auto",
         }}
         mainStyles={{
-          borderColor: 'var(--primary-light)',
-          borderRightColor: 'transparent',
+          borderColor: "var(--primary-light)",
+          borderRightColor: "transparent",
         }}
       />
     </div>
@@ -162,7 +162,7 @@ const SignHeader = () => {
   return (
     <div className={styles.popup__content__header}>
       <div className={styles.popup__content__header__heading}>
-        <TypeWriter words={['Some words for the chef?']} />
+        <TypeWriter words={["Some words for the chef?"]} />
       </div>
       <div className={styles.popup__content__header__description}>
         Leave a comment about anything - be it programming, or a funny joke you
