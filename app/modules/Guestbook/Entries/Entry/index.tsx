@@ -1,8 +1,8 @@
-import styles from './index.module.scss';
-import { useSession } from 'next-auth/react';
-import TextButton from '../../../../components/Button/Text';
-import { useState } from 'react';
-import axios from 'axios';
+import styles from "./index.module.scss";
+import { useSession } from "next-auth/react";
+import TextButton from "../../../../components/Button/Text";
+import { useState } from "react";
+import axios from "axios";
 
 const Entry = ({
   entry,
@@ -21,7 +21,7 @@ const Entry = ({
     const { data } = await axios.delete(`/api/guestbook/${entry._id}`);
 
     if (data.success) {
-      setEntries(entries.filter((e: any) => e._id !== entry._id));
+      setEntries(entries.filter((e) => e._id !== entry._id));
     }
 
     return setDeleting(false);
@@ -38,7 +38,7 @@ const Entry = ({
             danger
             className={styles.main__header__button}
           >
-            {isDeleting ? 'Deleting...' : 'Delete'}
+            {isDeleting ? "Deleting..." : "Delete"}
           </TextButton>
         )}
       </div>
