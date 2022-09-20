@@ -18,8 +18,10 @@ export default function Home() {
           </div>
 
           <div className={PageStyles.main__content__description}>
-            Hey there! I'm Nishit Jha, a 14 year old developer and designer. I
-            love to build web apps, and work with the MERN stack.{' '}
+            Hey there! I'm Nishit Jha, a 14 year old designer and full stack
+            developer. I love to build web apps, and work with the MERN stack. I
+            try to build new software that solves real-world problems, and
+            regularly participate in national and international hackathons.{' '}
           </div>
 
           <SkillsSection />

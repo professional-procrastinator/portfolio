@@ -1,9 +1,10 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import Loader from "../../../components/Loader";
-import Entry from "./Entry";
-import styles from "./index.module.scss";
-import SkeletonEntry from "./SkeletonEntry";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import Loader from '../../../components/Loader';
+import Entry from './Entry';
+import styles from './index.module.scss';
+import SkeletonEntry from './SkeletonEntry';
+import { useMediaQuery } from 'react-responsive';
 
 const GuestbookEntries = ({
   entries,
@@ -14,17 +15,25 @@ const GuestbookEntries = ({
   loading: boolean;
   setEntries: (entries: any[]) => void;
 }) => {
+  const isMobile = useMediaQuery({ maxWidth: '1069px' });
+
   return (
     <div className={styles.main}>
       {loading && (
         <div className={styles.main__entries}>
-          <SkeletonEntry />
-
-          <SkeletonEntry />
-
-          <SkeletonEntry />
-
-          <SkeletonEntry />
+          {isMobile ? (
+            <>
+              {[...Array(3)].map((_, i) => (
+                <SkeletonEntry key={i} />
+              ))}
+            </>
+          ) : (
+            <>
+              {[...Array(6)].map((_, i) => (
+                <SkeletonEntry key={i} />
+              ))}
+            </>
+          )}
         </div>
       )}
 

@@ -1,67 +1,81 @@
-import Skill from "../../../../utils/types/skill";
+import Skill from '../../../../utils/types/skill';
 
 const Skills: Skill[] = [
   {
-    name: "React",
+    name: 'React',
     icon: {
-      name: "akar-icons:react-fill",
-      color: "#61dafb",
+      name: 'akar-icons:react-fill',
+      color: '#61dafb',
     },
   },
   {
-    name: "MongoDB",
+    name: 'MongoDB',
     icon: {
-      name: "bxl:mongodb",
-      color: "#4caf50",
+      name: 'bxl:mongodb',
+      color: '#4caf50',
     },
   },
   {
-    name: "Prisma",
+    name: 'Prisma',
     icon: {
-      name: "file-icons:prisma",
-      color: "#ffffff",
+      name: 'file-icons:prisma',
+      color: '#ffffff',
     },
   },
   {
-    name: "GraphQL",
+    name: 'GraphQL',
     icon: {
-      name: "logos:graphql",
-      color: "#e10098",
+      name: 'logos:graphql',
+      color: '#e10098',
     },
   },
   {
-    name: "Firebase",
+    name: 'Firebase',
     icon: {
-      name: "simple-icons:firebase",
-      color: "#ffa726",
+      name: 'simple-icons:firebase',
+      color: '#ffa726',
     },
   },
   {
-    name: "Next.js",
+    name: 'Next.js',
     icon: {
-      name: "akar-icons:nextjs-fill",
-      color: "#ffffff",
+      name: 'akar-icons:nextjs-fill',
+      color: '#ffffff',
     },
   },
   {
-    name: "Socket.io",
+    name: 'Socket.io',
     icon: {
-      name: "cib:socket-io",
-      color: "#ffffff",
+      name: 'cib:socket-io',
+      color: '#ffffff',
     },
   },
   {
-    name: "Express",
+    name: 'Express',
     icon: {
-      name: "simple-icons:express",
-      color: "#ffffff",
+      name: 'simple-icons:express',
+      color: '#ffffff',
     },
   },
   {
-    name: "TypeScript",
+    name: 'TypeScript',
     icon: {
-      name: "cib:typescript",
-      color: "#ffffff",
+      name: 'cib:typescript',
+      color: '#ffffff',
+    },
+  },
+  {
+    name: 'Sass',
+    icon: {
+      name: 'logos:sass',
+      color: '#ffffff',
+    },
+  },
+  {
+    name: 'Stitches',
+    icon: {
+      name: 'file-icons:stitches',
+      color: '#ffffff',
     },
   },
 ];
