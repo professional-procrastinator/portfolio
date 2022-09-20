@@ -129,8 +129,8 @@ const SideNavLinks = ({ open }: { open: boolean }) => {
       icon: 'mdi-light:home',
     },
     {
-      name: 'My Projects',
-      href: '/projects',
+      name: 'About Me',
+      href: '/about',
       icon: 'mdi-light:star',
     },
     {

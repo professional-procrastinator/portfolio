@@ -71,13 +71,6 @@ const Skills: Skill[] = [
       color: '#ffffff',
     },
   },
-  {
-    name: 'Stitches',
-    icon: {
-      name: 'file-icons:stitches',
-      color: '#ffffff',
-    },
-  },
 ];
 
 export default Skills;
