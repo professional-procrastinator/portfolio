@@ -7,7 +7,7 @@ import Skill from '../../utils/types/skill';
 import SkillsSection from './Skills';
 
 export default function Home() {
-  const words = ['a developer', 'a designer', 'a math enthusiast.'];
+  const words = ['a developer', 'a designer', 'a STEM enthusiast.'];
 
   return (
     <>
