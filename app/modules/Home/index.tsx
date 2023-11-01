@@ -11,20 +11,11 @@ export default function Home() {
 
   return (
     <>
-      <div className={PageStyles.main}>
-        <div className={PageStyles.main__content}>
-          <div className={PageStyles.main__content__heading}>
-            <TypeWriter prefix="I am" words={words} />
-          </div>
-
-          <div className={PageStyles.main__content__description}>
-            Hey there! I'm Nishit Jha, a 14 year old designer and full stack
-            developer. I try to build new software with the MERN stack that solves real-world problems, and
-            regularly participate in national and international hackathons.{' '}
-          </div>
-
-          <SkillsSection />
-        </div>
+      <div>
+        <h1>JOY BANGLA</h1>
+        <h2>BANGLA X KENYA HACKERS REIGN</h2>
+        <p>Say no to gay say yes to kids</p>
+        <p>Please join my anti gay rallies with white kurtas</p>
       </div>
     </>
   );
